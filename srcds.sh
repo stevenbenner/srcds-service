@@ -19,7 +19,6 @@ case "$1" in
 		if [ -e $DIR ]; then
 			cd $DIR
 			su $SRCDS_USER -l -c "screen -d -m -S $NAME $DAEMON $PARAMS"
-			screen -d -m -S $NAME $DAEMON $PARAMS
 		else
 			echo "No such directory: $DIR!"
 		fi
