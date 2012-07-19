@@ -30,7 +30,7 @@ case "$1" in
 			kill `screen -ls |grep $NAME |awk -F . '{print $1}'|awk '{print $1}'`
 			echo " ... done."
 		else
-			echo "Coulnd't find a running $DESC"
+			echo "Couldn't find a running $DESC"
 		fi
 		;;
 
