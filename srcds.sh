@@ -51,7 +51,7 @@ case "$1" in
 
 	status)
 		# Check whether there's a "srcds" process
-		ps aux | grep -v grep | grep hlds_r > /dev/null
+		ps aux | grep -v grep | grep srcds_r > /dev/null
 		CHECK=$?
 		[ $CHECK -eq 0 ] && echo "SRCDS is UP" || echo "SRCDS is DOWN"
 		;;
