@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # replace <newuser> with the user you created above
 SRCDS_USER="<newuser>"
 
