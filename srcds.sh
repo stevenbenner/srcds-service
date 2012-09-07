@@ -27,9 +27,9 @@ case "$1" in
 		;;
 
 	stop)
-		if screen -ls |grep $NAME; then
+		if su $SRCDS_USER -l -c "screen -ls" |grep $NAME; then
 			echo -n "Stopping $DESC: $NAME"
-			kill `screen -ls |grep $NAME |awk -F . '{print $1}'|awk '{print $1}'`
+			kill `su $SRCDS_USER -l -c "screen -ls" |grep $NAME |awk -F . '{print $1}'|awk '{print $1}'`
 			echo " ... done."
 		else
 			echo "Couldn't find a running $DESC"
@@ -37,16 +37,16 @@ case "$1" in
 		;;
 
 	restart)
-		if screen -ls |grep $NAME; then
+		if su $SRCDS_USER -l -c "screen -ls" |grep $NAME; then
 			echo -n "Stopping $DESC: $NAME"
-			kill `screen -ls |grep $NAME |awk -F . '{print $1}'|awk '{print $1}'`
+			kill `su $SRCDS_USER -l -c "screen -ls" |grep $NAME |awk -F . '{print $1}'|awk '{print $1}'`
 			echo " ... done."
 		else
 			echo "Couldn't find a running $DESC"
 		fi
 		echo -n "Starting $DESC: $NAME"
 		cd $DIR
-		screen -d -m -S $NAME $DAEMON $PARAMS
+		su $SRCDS_USER -l -c "screen -d -m -S $NAME $DAEMON $PARAMS"
 		echo " ... done."
 		;;
 
